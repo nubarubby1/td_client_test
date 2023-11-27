@@ -1,0 +1,1 @@
+export const API = "https://solid-rocks-study.loca.lt/api";
