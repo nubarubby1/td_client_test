@@ -5,7 +5,6 @@ import SignIn from '../../screens/SignIn';
 //custom navigation from https://reactnavigation.org/docs/navigating
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-
 import Home from '../../screens/Home';
 import { AuthContext } from '../../context/auth';
 import HeaderTabs from './HeaderTabs';
@@ -24,61 +23,52 @@ some of these components used in App.js are <Text> <View>
 const Stack = createNativeStackNavigator();
 
 export default function ScreensNav() {
-  
   const [state, setState] = useContext(AuthContext);
-
-  
 
   // checking to see if we have a user
   const authenticated = state && state.token != '' && state.user != null;
   // const authenticated = true;
-  console.log("Authenticated =>", authenticated);
+  console.log('Authenticated =>', authenticated);
 
   return (
     // initialRouteName = default screen
     // signin will show initially b/c no user is authenticated yet
-    <Stack.Navigator
-      initialRouteName="Home"
-      // screenOptions={{ headerShown: false }}
-    >
+    <Stack.Navigator initialRouteName="Home">
       {authenticated ? (
         <>
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{
-            title: "Welcome to The Dojo",
-            // shows the header component at the right side
-            headerRight: () => <HeaderTabs />,
-          }}
-        />
-        <Stack.Screen
-          name="Account"
-          component={Account}
-          options={{
-            title: "My Account",
-            headerBackTitle: "Back"
-           
-          }}
-        />
-        <Stack.Screen
-          name="History"
-          component={History}
-          options={{
-            title: "History",
-            headerBackTitle: "Back"
-           
-          }}
-        />
-        <Stack.Screen
-          name="Characters"
-          component={Characters}
-          options={{
-            title: "Characters",
-            headerBackTitle: "Back"
-           
-          }}
-        />
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{
+              title: 'Welcome to The Dojo',
+              // shows the header component at the right side
+              headerRight: () => <HeaderTabs />,
+            }}
+          />
+          <Stack.Screen
+            name="Account"
+            component={Account}
+            options={{
+              title: 'My Account',
+              headerBackTitle: 'Back',
+            }}
+          />
+          <Stack.Screen
+            name="History"
+            component={History}
+            options={{
+              title: 'History',
+              headerBackTitle: 'Back',
+            }}
+          />
+          <Stack.Screen
+            name="Characters"
+            component={Characters}
+            options={{
+              title: 'Characters',
+              headerBackTitle: 'Back',
+            }}
+          />
         </>
       ) : (
         <>

@@ -7,7 +7,7 @@ export default function Characters() {
   return (
     <SafeAreaView style = {{flex: 1}}>
       <Text>
-        Characters Screen
+        Will test remote api later 
       </Text>
       <View style = {{flex: 1, justifyContent: 'flex-end'}}>
         <FooterTabs />

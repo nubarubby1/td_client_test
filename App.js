@@ -12,7 +12,7 @@ some of these components used in App.js are <Text> <View>
 
 
 export default function App() {
-  const names = ['kayla', 'kevin', 'joe'];
+  const names = ['bob', 'kevin', 'joe'];
 
   // // name is from props.name
   // return (

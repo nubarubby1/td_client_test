@@ -21,7 +21,7 @@ import { AuthContext } from "../context/auth";
 // autoCapitalize -> look up on react native text input
 
 const Signup = ({navigation}) => {
-  const [name, setName] = useState('Kevin');
+  const [username, setName] = useState('Kevin');
   const [email, setEmail] = useState('k@gmail.com');
   const [password, setPassword] = useState('password');
   const [loading, setLoading] = useState(false);
@@ -33,18 +33,18 @@ const Signup = ({navigation}) => {
 
   const handleSubmit = async () => {
     setLoading(true);
-    if (!name || !email || !password) {
+    if (!username || !email || !password) {
       alert('All fields are required');
       setLoading(false);
       return;
     }
-    console.log('Signup Request =>', name, email, password);
+    console.log('Signup Request =>', username, email, password);
 
    
     try {
       // making a request to a local server
-      const { data } = await axios.post(`/signup`, {
-        name,
+      const { data } = await axios.post(`${API}/signup`, {
+        username,
         email,
         password,
       });
@@ -65,7 +65,7 @@ const Signup = ({navigation}) => {
         alert('Sign up successful');
 
         //redirecting to home
-        navigation.navigate("Home");
+        navigation.navigate("Signin");
       }
 
 
@@ -92,21 +92,21 @@ const Signup = ({navigation}) => {
         </Text>
 
         <UserInput
-          name="NAME"
-          value={name}
+          username="NAME"
+          value={username}
           setValue={setName}
           autoCapitalize="words"
           autoCorrect={false}
         />
         <UserInput
-          name="EMAIL"
+          username="EMAIL"
           value={email}
           setValue={setEmail}
           autoCompleteType="email"
           keyboardType="email-address"
         />
         <UserInput
-          name="PASSWORD"
+          username="PASSWORD"
           value={password}
           setValue={setPassword}
           secureTextEntry={true}
@@ -127,7 +127,7 @@ const Signup = ({navigation}) => {
 
       </View>
 
-      {/* <Text>{JSON.stringify({ name, email, password }, null, 4)}</Text> */}
+      {/* <Text>{JSON.stringify({ username, email, password }, null, 4)}</Text> */}
     </KeyboardAwareScrollView>
   );
 };

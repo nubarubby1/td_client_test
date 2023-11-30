@@ -42,7 +42,7 @@ const SignIn = ({ navigation }) => {
     try {
       // making a request to a local server endpoint
       // axios baseURL already set in context/auth.js
-      const { data } = await axios.post(`/signin`, {
+      const { data } = await axios.post(`${API}/signin`, {
         email,
         password,
       });
